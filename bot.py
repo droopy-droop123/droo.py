@@ -3,7 +3,7 @@ from discord.ext import commands
 description = '''an example description, you can edit this'''
 
 # this specifies what extensions to load when the bot starts up
-startup_extensions = ["members", "rng"]
+startup_extensions = ["members", "rng", 'general', 'owner']
 
 bot = commands.Bot(command_prefix='prefixgoeshere', description=description)
 
