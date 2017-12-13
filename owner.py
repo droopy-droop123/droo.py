@@ -14,7 +14,7 @@ async def load(self, ctx, extension_name : str):
     await ctx.send("{} loaded.".format(extension_name))
 
 @commands.command()
-async def unload(extension_name : str):
+async def unload(self, ctx, extension_name : str):
     """Unloads an extension."""
     bot.unload_extension(extension_name)
     await ctx.send("{} unloaded.".format(extension_name))
