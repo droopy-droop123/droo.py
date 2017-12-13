@@ -1,27 +1,26 @@
 import random
 from discord.ext import commands
 
-class RNG():
-    def __init__(self, bot):
-        self.bot = bot
-
+class RNG:
+    """Some random cog."""
+    
     @commands.command()
-    async def roll(self, dice : str):
+    async def roll(self, ctx, dice : str):
         """Rolls a dice in NdN format."""
         try:
             rolls, limit = map(int, dice.split('d'))
         except Exception:
-            await self.bot.say('Format has to be in NdN!')
+            await ctx.send('Format has to be in NdN!')
             return
 
         result = ', '.join(str(random.randint(1, limit)) for r in range(rolls))
-        await self.bot.say(result)
+        await ctx.send(result)
 
-    @commands.command(description='For when you wanna settle the score some other way')
-    async def choose(self, *choices : str):
+    @commands.command()
+    async def choose(self, ctx, *choices : str):
         """Chooses between multiple choices."""
-        await self.bot.say(random.choice(choices))
+        await ctx.send(random.choice(choices))
 
 
 def setup(bot):
-    bot.add_cog(RNG(bot))
+    bot.add_cog(RNG())
